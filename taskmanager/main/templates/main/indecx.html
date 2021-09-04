@@ -1,0 +1,36 @@
+{% block title %}
+<title> моя страница </title>
+{% endblock %}
+
+{%block body%}
+
+<form method="post">
+    {% csrf_token %}
+    {{form.numbers}}
+    <button type="submit">отправить</button>
+</form>
+
+{% for el in attorney %}
+<div>
+    <h5> уровень доверености экстрасенса 1: {{el.attorney_1}} и уровень доверености экстрасенса 2: {{el.attorney_2}}  </h5>
+</div>
+{% endfor %}
+
+<h3> Ваши загадонные числа </h3>
+{% for el in HiddenNumbers %}
+<div>
+    <h5> {{el.numbers}} </h5>
+</div>
+{% endfor %}
+
+
+<div>
+    <h3> Предыдущие числа Мага №1 и Мага №2</h3>
+    {% for el in guesswork %}
+    <div>
+        <h4>{{el.witch_1}} | {{el.witch_2}}  </h4>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
